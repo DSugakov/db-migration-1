@@ -1,8 +1,8 @@
-with u as (
-    insert into users (name)
-    values ('John Doe'), ('Jane Doe')
-    returning id
+WITH u AS (
+  INSERT INTO users (name)
+  VALUES ('Alice'), ('Bob')
+  RETURNING id
 )
-insert into posts (text, owner_id)
-select (concat('Hello, world!', u.id, '!'), u.id)
-from u;
+INSERT INTO posts (text, owner_id)
+SELECT CONCAT('My ', u.id, ' post'), u.id
+FROM u; 
